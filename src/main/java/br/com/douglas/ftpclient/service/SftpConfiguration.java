@@ -15,7 +15,7 @@ import org.springframework.messaging.MessageHandler;
 import java.io.File;
 
 @Configuration
-public class SftpServices {
+public class SftpConfiguration {
 
     @Value("${sftp.host}")
     private String sftpHost;
