@@ -1,9 +1,9 @@
 # Getting Started
 
-### How its work's
-This app is a RESTful API then receive some JSON data, 
-write the data in a csv file and upload to a remote sftp or ftp server.
+## Description
+FTP client designed to be a rest API service, which receives any data in JSON and upload it to a remote ftp/sftp server how a csv file.
 
-### Config
-Just put your ftp/sftp server config in /resources/application.properties.
-Dont need any aditional configuration, just simple like that.
+## Configuration
+Just put your ftp/sftp server configuration (host, port, user, pass and directory) in /resources/application.properties.
+
+Don't need any additional configuration, just the pojo implementation of your trafegated data.
