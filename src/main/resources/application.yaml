@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+# Custom SFTP configuration
+sftp:
+  host: test.rebex.net
+  user: demo
+  pass: password
+  port: 22
+  remote:
+    directory: /
