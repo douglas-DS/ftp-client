@@ -1,7 +1,7 @@
 # Getting Started
-Just put your ftp/sftp server configuration (host, port, user, pass and directory) in /resources/application.properties.
+The sftp configuration props are exposed in the `application.yaml` file.
 
-Don't need any additional configuration, just the pojo implementation of your trafegated data.
+Doesn't require any additional configuration to work.
 
 ## Description
-FTP client designed to be a restful service, which receives any data in JSON and upload it to a remote ftp/sftp server how a csv file.
+SFTP client exposed as an endpoint to upload JSON data structures as CSV file.
