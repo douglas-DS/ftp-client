@@ -1,4 +1,4 @@
-package br.com.douglas.ftpclient.endpoint.service;
+package com.ds.ftpclient.core;
 
 import org.springframework.integration.annotation.Gateway;
 import org.springframework.integration.annotation.MessagingGateway;

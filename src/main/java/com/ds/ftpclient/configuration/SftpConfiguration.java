@@ -1,4 +1,4 @@
-package br.com.douglas.ftpclient.service;
+package com.ds.ftpclient.configuration;
 
 import com.jcraft.jsch.ChannelSftp;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,28 +18,28 @@ import java.io.File;
 public class SftpConfiguration {
 
     @Value("${sftp.host}")
-    private String sftpHost;
+    private String host;
 
     @Value("${sftp.user}")
-    private String sftpUser;
+    private String user;
 
     @Value("${sftp.pass}")
-    private String sftpPass;
+    private String pass;
 
     @Value("${sftp.port}")
-    private Integer sftpPort;
+    private int port;
 
     @Value("${sftp.remote.directory}")
-    private String sftpRemoteDirectory;
+    private String remoteDirectory;
 
     @Bean
     public SessionFactory<ChannelSftp.LsEntry> sftpSessionFactory() {
         DefaultSftpSessionFactory factory = new DefaultSftpSessionFactory(true);
         try {
-            factory.setHost(sftpHost);
-            factory.setPort(sftpPort);
-            factory.setUser(sftpUser);
-            factory.setPassword(sftpPass);
+            factory.setHost(host);
+            factory.setPort(port);
+            factory.setUser(user);
+            factory.setPassword(pass);
             factory.setAllowUnknownKeys(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class SftpConfiguration {
     @ServiceActivator(inputChannel = "toSftpChannel")
     public MessageHandler handler() {
         SftpMessageHandler handler = new SftpMessageHandler(sftpSessionFactory());
-        handler.setRemoteDirectoryExpression(new LiteralExpression(sftpRemoteDirectory));
+        handler.setRemoteDirectoryExpression(new LiteralExpression(remoteDirectory));
         handler.setFileNameGenerator(message -> {
             if (message.getPayload() instanceof File) return ((File) message.getPayload()).getName();
              else {

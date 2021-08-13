@@ -1,4 +1,4 @@
-package br.com.douglas.ftpclient;
+package com.ds.ftpclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package br.com.douglas.ftpclient;
+package com.ds.ftpclient;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
