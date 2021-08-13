@@ -8,7 +8,6 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -21,25 +20,24 @@ import java.util.*;
 public class CsvFileGenerator {
 
     private static final Charset CHARSET = StandardCharsets.UTF_8;
-    private static final String PATH = "csv/";
     private static final String EXTENSION = ".csv";
     private static final String DELIMITER = ";";
     
-    private String resourcePath;
+    private String resourceName;
 
     public void eraseFile() {
         try {
-            Path p = Paths.get(resourcePath);
-            Files.deleteIfExists(p);
+            var path = Paths.get(resourceName);
+            Files.deleteIfExists(path);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public File createFile(@NonNull Map<String, Object> data) {
-        this.resourcePath = PATH + UUID.randomUUID() + EXTENSION;
+        this.resourceName = UUID.randomUUID() + EXTENSION;
         File file;
-        try (var bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.resourcePath), CHARSET))) {
+        try (var bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.resourceName), CHARSET))) {
             var headers = String.join(DELIMITER, data.keySet());
             bw.write(headers);
             bw.newLine();
@@ -47,7 +45,7 @@ public class CsvFileGenerator {
             bw.write(values);
             bw.flush();
             bw.close();
-            file = new File(this.resourcePath);
+            file = new File(this.resourceName);
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Failed creating CSV file.");
